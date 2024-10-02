@@ -1,19 +1,22 @@
 'use client'
 
+type ModelType = "gpt-4o-2024-08-06" | "gpt-4o-mini" | "claude-3-sonnet";
+
 interface ModelSelectorProps {
-  model: 'gpt-4' | 'claude-3-sonnet'
-  onModelChange: (model: 'gpt-4' | 'claude-3-sonnet') => void
+  model: ModelType;
+  onModelChange: (model: ModelType) => void;
 }
 
 export default function ModelSelector({ model, onModelChange }: ModelSelectorProps) {
   return (
-    <div className="p-4 border-b border-gray-700 bg-gray-800 rounded-t-lg">
+    <div className="w-full">
       <select
         value={model}
-        onChange={(e) => onModelChange(e.target.value as 'gpt-4' | 'claude-3-sonnet')}
-        className="p-2 border rounded text-gray-100 bg-gray-700 border-gray-600"
+        onChange={(e) => onModelChange(e.target.value as ModelType)}
+        className="w-full p-2 rounded text-gray-100 bg-gray-700 border-gray-600"
       >
-        <option value="gpt-4">GPT-4</option>
+        <option value="gpt-4o-2024-08-06">OpenAI GPT-4</option>
+        <option value="gpt-4o-mini">GPT-4o Mini</option>
         <option value="claude-3-sonnet">Claude 3 Sonnet</option>
       </select>
     </div>
